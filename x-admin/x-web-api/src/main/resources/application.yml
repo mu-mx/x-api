@@ -4,5 +4,15 @@ server:
 spring:
   application:
     name: x-web-api
-
-
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: root
+    url: jdbc:mysql://192.168.186.130:3306/nav_web_site?useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT%2B8
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  mapper-locations: classpath:/dao/*.xml
