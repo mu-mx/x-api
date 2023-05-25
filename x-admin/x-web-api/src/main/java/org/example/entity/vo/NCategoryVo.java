@@ -8,6 +8,8 @@ import lombok.NoArgsConstructor;
 @Data
 public class NCategoryVo {
 
+    @JsonProperty("id")
+    private String id;
     @JsonProperty("title")
     private String title;
 

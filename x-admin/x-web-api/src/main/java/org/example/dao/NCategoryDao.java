@@ -11,7 +11,6 @@ import org.example.entity.NCategory;
  * @since 2023-05-23 17:09:37
  */
 
-@Mapper
 public interface NCategoryDao extends BaseMapper<NCategory> {
 
 }

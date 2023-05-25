@@ -1,15 +1,19 @@
 package org.example.controller;
 
 import java.util.List;
+import javax.websocket.server.PathParam;
+import org.example.entity.query.NCategoryQuery;
 import org.example.entity.vo.NCategoryVo;
 import org.example.entity.NCategory;
 import org.example.result.Result;
+import org.example.result.ResultCodeEnum;
 import org.example.service.NCategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
@@ -22,9 +26,14 @@ public class categoryController {
 
     @RequestMapping("/list")
     @ResponseBody
-    public Result list() {
-        List<NCategory> list = nCategoryService.list();
-        return Result.ok(list);
+    public Result list(NCategoryQuery categoryQuery,
+            @RequestParam Integer current,
+            @RequestParam Integer pageSize
+    ) {
+        return Result.build(
+                nCategoryService.getList(current, pageSize, categoryQuery),
+                ResultCodeEnum.SUCCESS
+        );
     }
 
     @RequestMapping("/treeList")
@@ -42,4 +51,13 @@ public class categoryController {
         return Result.ok();
     }
 
+
+
+
+    @RequestMapping("/dels")
+    @ResponseBody
+    public Result del(@RequestParam Integer id) {
+        nCategoryService.delItem(id);
+        return Result.ok();
+    }
 }

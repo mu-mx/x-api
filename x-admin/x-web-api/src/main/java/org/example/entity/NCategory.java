@@ -33,7 +33,29 @@ public class NCategory implements Serializable {
     private String title;
 
     @TableField(exist = false)
+    private String fullIds;
+
+    public String getFullIds() {
+        return fullIds;
+    }
+
+    public void setFullIds(String fullIds) {
+        this.fullIds = fullIds;
+    }
+
+    @TableField(exist = false)
     private List<NCategory> children;
+
+    @TableField(exist = false)
+    private String pTitle;
+
+    public String getpTitle() {
+        return pTitle;
+    }
+
+    public void setpTitle(String pTitle) {
+        this.pTitle = pTitle;
+    }
 
     public Integer getpId() {
         return pId;
@@ -90,7 +112,6 @@ public class NCategory implements Serializable {
 
     public NCategory() {
     }
-
 
 }
 

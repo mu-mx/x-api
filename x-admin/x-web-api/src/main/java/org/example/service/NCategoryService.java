@@ -2,6 +2,7 @@ package org.example.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import java.util.List;
+import org.example.entity.query.NCategoryQuery;
 import org.example.entity.vo.NCategoryVo;
 import org.example.entity.NCategory;
 
@@ -17,6 +18,10 @@ public interface NCategoryService extends IService<NCategory> {
 
 
     void addNew(NCategoryVo categoryVo);
+
+    Object getList(Integer current, Integer pageSize, NCategoryQuery categoryQuery);
+
+    void delItem(Integer id);
 
 }
 
