@@ -10,13 +10,14 @@ public class NCategoryVo {
 
     @JsonProperty("id")
     private String id;
+
     @JsonProperty("title")
     private String title;
 
     @JsonProperty("description")
     private String description;
 
-    @JsonProperty("categoryId")
-    private Integer categoryId;
+    @JsonProperty("pId")
+    private Integer pId;
 
 }

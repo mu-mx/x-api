@@ -1,7 +1,7 @@
 package org.example.controller;
 
 import java.util.List;
-import javax.websocket.server.PathParam;
+
 import org.example.entity.query.NCategoryQuery;
 import org.example.entity.vo.NCategoryVo;
 import org.example.entity.NCategory;
@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 @RequestMapping("/category")
 @CrossOrigin
-public class categoryController {
+public class CategoryController {
 
     @Autowired
     private NCategoryService nCategoryService;
@@ -44,7 +44,7 @@ public class categoryController {
         return Result.ok(list);
     }
 
-    @RequestMapping("/add")
+    @RequestMapping("/save")
     @ResponseBody
     public Result add(@RequestBody NCategoryVo categoryVo) {
         nCategoryService.addNew(categoryVo);

@@ -8,6 +8,6 @@ public class NCategoryQuery implements Serializable {
 
     private String title;
 
-    private String categoryId;
+    private String pId;
 
 }
