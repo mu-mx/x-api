@@ -48,7 +48,7 @@ public class NSitesServiceImpl extends ServiceImpl<NSitesDao, NSites> implements
         Page<NSites> page = new Page<>(current, pageSize);
         LambdaQueryWrapper<NSites> wrapper = new LambdaQueryWrapper<>();
         if (!StringUtils.isEmpty(sitesQuery.getPId())) {
-            wrapper.eq(NSites::getpId, sitesQuery.getPId());
+            wrapper.eq(NSites::getPId, sitesQuery.getPId());
         }
 
         if (!StringUtils.isEmpty(sitesQuery.getTitle())) {
@@ -67,9 +67,9 @@ public class NSitesServiceImpl extends ServiceImpl<NSitesDao, NSites> implements
         if (!records.isEmpty()) {
             List<NCategory> nCategoryList = categoryService.list();
             records.stream().map(menu -> {
-                        NCategory parentCategory = categoryService.getById(menu.getpId());
+                        NCategory parentCategory = categoryService.getById(menu.getPId());
                         if (null != parentCategory) {
-                            menu.setpTitle(parentCategory.getTitle());
+                            menu.setPTitle(parentCategory.getTitle());
                         }
                         NCategory nCategory = addFullId(parentCategory, nCategoryList);
                         menu.setFullIds(nCategory.getFullIds());

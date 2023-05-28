@@ -3,7 +3,6 @@ package org.example.entity.vo;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 
@@ -37,6 +36,9 @@ public class NSitesVo implements Serializable {
 
     // 网站状态
     private Integer state;
+
+
+    private Integer sort;
 
 
 }
