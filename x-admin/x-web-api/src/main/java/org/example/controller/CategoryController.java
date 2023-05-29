@@ -1,20 +1,18 @@
 package org.example.controller;
 
-import java.util.List;
-
+import org.example.entity.NCategory;
 import org.example.entity.query.NCategoryQuery;
 import org.example.entity.vo.NCategoryVo;
-import org.example.entity.NCategory;
 import org.example.result.Result;
 import org.example.result.ResultCodeEnum;
 import org.example.service.NCategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Arrays;
+import java.util.List;
 
 @Controller
 @RequestMapping("/category")
@@ -27,8 +25,8 @@ public class CategoryController {
     @RequestMapping("/list")
     @ResponseBody
     public Result list(NCategoryQuery categoryQuery,
-            @RequestParam Integer current,
-            @RequestParam Integer pageSize
+                       @RequestParam Integer current,
+                       @RequestParam Integer pageSize
     ) {
         return Result.build(
                 nCategoryService.getList(current, pageSize, categoryQuery),
@@ -52,12 +50,16 @@ public class CategoryController {
     }
 
 
-
-
-    @RequestMapping("/dels")
+    @RequestMapping("/delete")
     @ResponseBody
-    public Result del(@RequestParam Integer id) {
-        nCategoryService.delItem(id);
+    public Result del(
+            @RequestParam String ids
+    ) {
+        if (StringUtils.hasLength(ids)) {
+            String[] idArr = ids.split(",");
+            nCategoryService.removeByIds(Arrays.asList(idArr));
+        }
         return Result.ok();
     }
+
 }
