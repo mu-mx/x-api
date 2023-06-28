@@ -6,4 +6,4 @@ COPY  x-admin/x-web-api/target/*.jar  /opt/x-api/app.jar
 
 EXPOSE 8001
 
-ENTRYPOINT ["java","-jar","/opt/java/app.jar"]
+ENTRYPOINT ["java","-jar","/opt/x-api/app.jar"]
