@@ -5,10 +5,12 @@ spring:
   application:
     name: x-web-api
   datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    username: root
-    password: root
-    url: jdbc:mysql://192.168.48.128:3306/nav_web_site?useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT%2B8
+    #    url: jdbc:mysql://192.168.48.128:3306/nav_web_site?useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT%2B8
+    #    driver-class-name: com.mysql.cj.jdbc.Driver
+    #    username: root
+    #    password: root
+    url: jdbc:sqlite:db/data.db
+    driver-class-name: org.sqlite.JDBC
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss
     time-zone: GMT+8

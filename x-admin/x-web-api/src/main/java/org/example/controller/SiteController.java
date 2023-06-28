@@ -2,7 +2,6 @@ package org.example.controller;
 
 import java.util.Arrays;
 import java.util.List;
-import org.example.entity.NCategory;
 import org.example.entity.query.NSitesQuery;
 import org.example.entity.vo.NSitesVo;
 import org.example.entity.vo.SiteAllTreeVo;
@@ -29,45 +28,40 @@ public class SiteController {
   @RequestMapping("/list")
   @ResponseBody
   public Result list(
-      NSitesQuery sitesQuery,
-      @RequestParam Integer current,
-      @RequestParam Integer pageSize
+	NSitesQuery sitesQuery, @RequestParam Integer current, @RequestParam Integer pageSize
   ) {
 
-    return Result.build(
-        nSitesService.getList(current, pageSize, sitesQuery),
-        ResultCodeEnum.SUCCESS
-    );
+	return Result.build(nSitesService.getList(current, pageSize, sitesQuery), ResultCodeEnum.SUCCESS);
   }
 
   @RequestMapping("/save")
   @ResponseBody
   public Result save(
-      @RequestBody NSitesVo nSitesVo
+	@RequestBody NSitesVo nSitesVo
   ) {
-    nSitesService.saveItem(nSitesVo);
-    return Result.ok();
+	nSitesService.saveItem(nSitesVo);
+	return Result.ok();
   }
 
 
   @RequestMapping("/delete")
   @ResponseBody
   public Result del(
-      @RequestParam String ids
+	@RequestParam String ids
   ) {
-    if (StringUtils.hasLength(ids)) {
-      String[] idArr = ids.split(",");
-      nSitesService.removeByIds(Arrays.asList(idArr));
-    }
-    return Result.ok();
+	if (StringUtils.hasLength(ids)) {
+	  String[] idArr = ids.split(",");
+	  nSitesService.removeByIds(Arrays.asList(idArr));
+	}
+	return Result.ok();
   }
 
 
   @RequestMapping("/all")
   @ResponseBody
   public Result allData() {
-    List<SiteAllTreeVo> list = nSitesService.getAllData();
-    return Result.ok(list);
+	List<SiteAllTreeVo> list = nSitesService.getAllData();
+	return Result.ok(list);
   }
 
 

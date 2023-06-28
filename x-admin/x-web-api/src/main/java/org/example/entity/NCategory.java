@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import java.io.Serializable;
 import java.util.List;
 import lombok.AllArgsConstructor;
@@ -19,8 +20,6 @@ import lombok.NoArgsConstructor;
 @SuppressWarnings("serial")
 @TableName("n_category")
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 public class NCategory implements Serializable {
 
   // 自增 ID
@@ -29,6 +28,7 @@ public class NCategory implements Serializable {
 
   // 父类 ID
   @TableField("p_id")
+  @JsonProperty("pId")
   private Integer pId;
 
   // 描述
@@ -38,12 +38,14 @@ public class NCategory implements Serializable {
   private String title;
 
   @TableField(exist = false)
+  @JsonProperty("fullIds")
   private String fullIds;
 
   @TableField(exist = false)
   private List<NCategory> children;
 
   @TableField(exist = false)
+  @JsonProperty("pTitle")
   private String pTitle;
 
 
