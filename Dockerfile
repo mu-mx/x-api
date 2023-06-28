@@ -1,9 +1,9 @@
 FROM openjdk:8
 
-VOLUME /opt/java/x-api
+VOLUME /opt/x-api
 
-COPY  x-admin/x-web-api/target/*.jar  /opt/java/x-api/app.jar
+COPY  x-admin/x-web-api/target/*.jar  /opt/x-api/app.jar
 
 EXPOSE 8001
 
-ENTRYPOINT ["java","-jar","/opt/java/x-api/app.jar"]
+ENTRYPOINT ["java","-jar","/opt/java/app.jar"]
