@@ -1,9 +1,10 @@
 FROM openjdk:8
 
-VOLUME /opt/x-api
+WORKDIR /opt/java
 
-COPY  x-admin/x-web-api/target/*.jar  /opt/x-api/app.jar
+COPY  x-admin/x-web-api/target/*.jar  app.jar
+COPY  db  ./db
 
-EXPOSE 8001
+EXPOSE 80
 
-ENTRYPOINT ["java","-jar","/opt/x-api/app.jar"]
+CMD ["java","-jar","app.jar"]
